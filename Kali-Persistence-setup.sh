@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+# This file is a personal bash post install script for a USB flash drive with Kali linux.
 
 # a useful guide - http://null-byte.wonderhowto.com/how-to/install-kali-live-usb-drive-with-persistence-optional-0162253/
 
@@ -32,7 +32,6 @@ KALIBOOTCK=$(sed -n '3p' $KALIBOOTFILE |grep -c default)
 
 echo "Checking Kali Bootscreen File" ;
 
-#if [[ $KALIBOOTCK -ne 0 ]] ; then echo "Fixing the file" ; else echo "File is good" ; fi;
 if [[ $KALIBOOTCK -ne 0 ]] ; then
 	#Delete menu default
 	sed -i '3d' $KALIBOOTFILE ;
@@ -91,7 +90,7 @@ PERSISTENCECK="/mnt/MYUSB/persistence.conf"
 PERSISTENCECKINFO=$( awk '/union/ { print $2 } ' $PERSISTENCECK )
 PERSISTENCEINFO="union"
 
-#IF the file exist and has info in it && file has the correct union info inside then...
+#IF the file exist and has info in it && file has the correct union info inside then move on else install persistence
 echo "Checking Persistence"
 if [[ -r $PERSISTENCECK ]] && [[ $PERSISTENCECKINFO -eq $PERSISTENCEINFO ]] ;
 then
@@ -163,7 +162,7 @@ echo "Change the root password"
 passwd
 
 
-echo "Add these extensions (Loading Firefox... *Accept page shell on load)"
+echo "Add these usefull extensions (Loading Firefox... *Accept page shell on load)"
 start firefox --new-tab https://extensions.gnome.org/extension/1031/topicons/
 firefox --new-tab https://extensions.gnome.org/extension/72/recent-items/
 firefox --new-tab https://extensions.gnome.org/extension/779/clipboard-indicator/
