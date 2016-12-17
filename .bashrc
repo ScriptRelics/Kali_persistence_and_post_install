@@ -58,6 +58,8 @@ alias l='ls $LS_OPTIONS -Ap'
 
 alias dir="dir --color=auto"
 alias grep="grep --color=auto"
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 alias dmesg='dmesg --color'
 
 alias ls='ls $LS_OPTIONS -Ap'               # Preferred ‘ls’ implementation
@@ -78,6 +80,11 @@ alias c='clear'                             # c:            Clear terminal displ
 alias path='echo -e ${PATH//:/\\n}'         # path:         Echo all executable Paths
 alias show_options='shopt'                  # Show_options: display bash options settings
 alias fix_stty='stty sane'                  # fix_stty:     Restore terminal settings when screwed up
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
 
 # #(Number of jobs) if the last command was sucessful then display red name @ green highlight else display red name @ red highlight:(PATH)(NEW LINE)
 PS1="\n#\j \[\`if [[ \$? = "0" ]]; then echo '$FONT_BOLD$FG_RED\u$FONT_RESET$FONT_BOLD@$BG_GREEN\h$FONT_RESET'; else echo '$FONT_BOLD$FG_RED\u$FONT_RESET@$FONT_BOLD$BG_RED\h$FONT_RESET' ; fi\`:\w\n"
